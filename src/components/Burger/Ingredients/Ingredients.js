@@ -1,3 +1,5 @@
+import React from 'react';
+
 import classes from './Ingredient.module.css';
 
 const ingredient = (props) => {
