@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import PropsTypes from 'prop-types'
 
 import classes from './BurgerIngredients.module.css';
