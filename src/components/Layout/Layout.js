@@ -7,17 +7,23 @@ import SlideDrawer from '../Navigation/SlideDrawer/SlideDrawer';
 class Layout extends Component {
 
   state = {
-    showSlideDrawer: true
+    showSlideDrawer: false
   }
 
   slideDrawerHandle = () => {
       this.setState({showSlideDrawer: false});
   }
 
+  slideDrawerToggleHandle = () => {
+    this.setState((preState) => {
+      return {showSlideDrawer: !preState.showSlideDrawer}
+    });
+  }
+
   render() {
     return (
       <Aux>
-          <Toolbar/>
+          <Toolbar drawerToggleClicked={this.slideDrawerToggleHandle}/>
           <SlideDrawer open={this.state.showSlideDrawer} closed={this.slideDrawerHandle}/>
           <main className={classes.Content}>
             {this.props.children}
