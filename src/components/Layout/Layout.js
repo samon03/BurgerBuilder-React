@@ -1,15 +1,30 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Aux from "../../hoc/Auxiliry";
 import classes from './Layout.module.css';
 import Toolbar from '../Navigation/Toolbar/Toolbar';
+import SlideDrawer from '../Navigation/SlideDrawer/SlideDrawer';
 
-const layout = (props) => (
-   <Aux>
-        <Toolbar/>
-        <main className={classes.Content}>
-          {props.children}
-        </main>
-   </Aux>
-);
+class Layout extends Component {
 
-export default layout;
+  state = {
+    showSlideDrawer: true
+  }
+
+  slideDrawerHandle = () => {
+      this.setState({showSlideDrawer: false});
+  }
+
+  render() {
+    return (
+      <Aux>
+          <Toolbar/>
+          <SlideDrawer open={this.state.showSlideDrawer} closed={this.slideDrawerHandle}/>
+          <main className={classes.Content}>
+            {this.props.children}
+          </main>
+      </Aux>
+    )
+  }
+}
+
+export default Layout;
